@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import "./CreateArea.css";
+import React, { useState } from "react";
+import './CreateArea.css'
 
-function CreateArea() {
-  const [notes, setNotes] = useState({
+function CreateArea(props) {
+  const [note, setNote] = useState({
     title: "",
-    content: "",
+    content: ""
   });
 
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setNotes((preValue) => {
+    setNote(prevNote => {
       return {
-        ...preValue,
-        [name]: value,
+        ...prevNote,
+        [name]: value
       };
     });
   }
@@ -33,13 +33,13 @@ function CreateArea() {
         <input
           name="title"
           onChange={handleChange}
-          value={notes.title}
+          value={note.title}
           placeholder="Title"
         />
         <textarea
           name="content"
           onChange={handleChange}
-          value={notes.content}
+          value={note.content}
           placeholder="Take a note..."
           rows="3"
         />
